@@ -1,0 +1,10 @@
+{
+  "description": "Enables users to quickly generate and manage tasks or actions, streamlining productivity for individuals and teams seeking efficient workflow solutions.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
