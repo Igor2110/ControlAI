@@ -1,0 +1,24 @@
+# Sobe apenas o banco de dados (MySQL 8). A API e o frontend rodam na sua máquina com `npm run dev`.
+services:
+  db:
+    image: mysql:8.0
+    container_name: controlai-db
+    restart: unless-stopped
+    command: --default-time-zone=-03:00 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: controlai
+      MYSQL_USER: controlai
+      MYSQL_PASSWORD: controlai
+    ports:
+      - '3306:3306'
+    volumes:
+      - controlai-data:/var/lib/mysql
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost', '-uroot', '-proot']
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  controlai-data:
